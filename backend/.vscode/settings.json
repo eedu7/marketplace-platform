@@ -1,0 +1,34 @@
+{
+    "editor.acceptSuggestionOnEnter": "smart",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.ruff": "always",
+        "source.organizeImports.ruff": "always",
+        "source.sort.json": "always"
+    },
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnPaste": true,
+    "editor.inlayHints.enabled": "on",
+    "explorer.compactFolders": false,
+    "files.exclude": {
+        "**/.DS_Store": true,
+        "**/.git": true,
+        "**/.hg": true,
+        "**/.pytest_cache": true,
+        "**/.svn": true,
+        "**/Thumbs.db": true
+    },
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.fixAll": [
+        "source.unusedImports",
+        "source.addTypeAnnotation",
+        "source.convertImportFormat",
+        "source.convertImportStar",
+        "source.unusedImports",
+        "source.convertImportFormat",
+    ],
+    "python.analysis.typeCheckingMode": "basic",
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "ty.completions.autoImport": true,
+    "ty.inlayHints.callArgumentNames": true,
+    "ty.inlayHints.variableTypes": true
+}
