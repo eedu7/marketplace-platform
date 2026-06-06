@@ -1,9 +1,8 @@
 from typing import Any, Dict, Generic, Sequence, Type, TypeVar
 from uuid import UUID
 
-from fastapi import HTTPException, status
-
 from core.database import DBBase
+from core.exceptions.base import NotFoundException
 from core.repository import BaseRepository
 
 ModelType = TypeVar("ModelType", bound=DBBase)
@@ -18,9 +17,8 @@ class BaseController(Generic[ModelType]):
         obj = await self.repository.get_by_uid(uid)
 
         if obj is None:
-            raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
-                detail=f"{self.model.__name__} with uid {uid} not found",
+            raise NotFoundException(
+                f"{self.model.__name__} with uid {uid} not found",
             )
         return obj
 
