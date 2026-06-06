@@ -10,5 +10,5 @@ class AuthController(BaseController[DBUser]):
         super().__init__(DBUser, repository)
         self.repository = repository
 
-    async def register(self, email: EmailStr, password: str) -> DBUser:
-        return await self.repository.create({"email": str(email), "password": password})
+    async def register(self,username: str, email: EmailStr, password: str) -> DBUser:
+        return await self.create({"username": username, "email": str(email), "password": password})
