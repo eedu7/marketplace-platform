@@ -1,4 +1,5 @@
 from typing import Any, Dict, Generic, Sequence, Type, TypeVar
+from uuid import UUID
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -20,6 +21,9 @@ class BaseRepository(Generic[ModelType]):
         self.session.add(instance)
         return instance
 
+    async def get_by_uid(self, uid: UUID) -> ModelType | None:
+        return await self.session.get(self.model, uid)
+
     async def get_all(self, offset: int = 0, limit: int = 100) -> Sequence[ModelType]:
         query = select(self.model).offset(offset).limit(limit)
         result = await self.session.execute(query)
@@ -30,5 +34,6 @@ class BaseRepository(Generic[ModelType]):
         result = await self.session.execute(query)
         return result.scalars().first()
 
-    async def delete(self, model: ModelType) -> None:
+    async def delete(self, model: ModelType) -> bool:
         await self.session.delete(model)
+        return True

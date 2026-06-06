@@ -26,4 +26,4 @@ class DBUser(DBBase):
         return f"DBUser(uid={self.uid}, email={self.email}, username={self.username})"
 
     def __str__(self) -> str:
-        return f"DBUser(uid={self.uid}, email={self.email}, username={self.username})"
+        return self.__repr__()
